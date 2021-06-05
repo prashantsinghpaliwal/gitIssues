@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.prashant.nogitissues.data.IssueItem" />
+
+        <variable
+            name="itemClick"
+            type="com.prashant.nogitissues.ui.main.PagedIssueAdapter.ItemClickListener" />
+
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() ->  itemClick.onItemClicked(model)}"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            app:setRoundedImageUrl="@{model.user.avatarUrl}"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/Body1.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{model.title}"
+                android:textColor="?android:textColorPrimary"
+                android:textStyle="bold"
+                tools:text="@string/title_holder" />
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/Body1.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{model.body}"
+                android:textColor="?android:textColorSecondary"
+                tools:text="@string/desc_holder" />
+
+            <TextView
+                android:id="@+id/author"
+                style="@style/Body1.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{`Status: ` + model.state}"
+                android:textColor="?android:textColorPrimary"
+                tools:text="@string/author" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>
+
+
+
