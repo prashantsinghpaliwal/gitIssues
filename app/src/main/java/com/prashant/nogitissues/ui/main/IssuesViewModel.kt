@@ -45,12 +45,4 @@ class IssuesViewModel @ViewModelInject constructor(private val issueService: Iss
     fun getPagedData(): LiveData<PagedList<IssueItem>>? {
         return pagedListLiveData
     }
-
-
-    fun getIssues(page: Int, limit: Int): Observable<Resource<List<IssueItem>>> =
-        issueService.getIssues(page, limit)
-            .toObservable()
-            .subscribeOn(Schedulers.io())
-            .map(Resource.Companion::success)
-            .startWithItem(Resource.loading())
 }

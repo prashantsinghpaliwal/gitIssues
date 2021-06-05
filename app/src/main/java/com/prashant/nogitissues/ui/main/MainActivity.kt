@@ -16,13 +16,11 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(),  PagedIssueAdapter.ItemClickListener {
 
-//    IssuesAdapter.ItemClickListener,
     private val viewModel by viewModels<IssuesViewModel>()
     private val binding by lazy {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
     }
 
-    private lateinit var issuesAdapter: IssuesAdapter
     private lateinit var pagedAdapter: PagedIssueAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,25 +30,6 @@ class MainActivity : AppCompatActivity(),  PagedIssueAdapter.ItemClickListener {
     }
 
     private fun setUpObservers() {
-
-//        viewModel.getIssues(1, 10)
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe ({
-//                it.render(onLoading = {
-//
-//
-//                },
-//                    onSuccess = { data ->
-//
-//                        data?.let {
-//                            issuesAdapter.set(it)
-//                        }
-//                    },
-//                    onError = {
-//                    })
-//            },{
-//                Log.v("LogTags","${it.localizedMessage}")
-//            })
 
         viewModel.getPagedData()?.observe(this, { pagedList ->
 
@@ -63,8 +42,6 @@ class MainActivity : AppCompatActivity(),  PagedIssueAdapter.ItemClickListener {
 
     private fun setUpUi() {
         with(binding) {
-
-//            issuesAdapter = IssuesAdapter(this@MainActivity)
             pagedAdapter = PagedIssueAdapter(this@MainActivity)
             issueRecyclerView.apply {
                 this.adapter = pagedAdapter
