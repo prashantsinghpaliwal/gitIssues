@@ -9,10 +9,17 @@ interface IssueService {
 
     fun getIssues(page: Int, limit: Int): Single<List<IssueItem>>
 
+    fun getIssueDetails(issueId: Int) : Single<IssueItem>
+
     class Impl @Inject constructor(private val issuesApi: IssuesApi) : IssueService {
 
         override fun getIssues(page: Int, limit: Int): Single<List<IssueItem>> {
             return issuesApi.getIssues(page, limit)
+                .subscribeOn(Schedulers.io())
+        }
+
+        override fun getIssueDetails(issueId: Int): Single<IssueItem> {
+            return issuesApi.getIssueDetails(issueId)
                 .subscribeOn(Schedulers.io())
         }
 

@@ -1,4 +1,4 @@
-package com.prashant.nogitissues.ui.main
+package com.prashant.nogitissues.ui.issuelist
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -17,13 +17,14 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 
-class IssuesViewModel @ViewModelInject constructor(private val issueService: IssueService) :
+class IssuesViewModel @ViewModelInject constructor(issueService: IssueService) :
     ViewModel() {
 
     private var photoDataSourceFactory: DataSourceFactory? = null
     private var dataSourceMutableLiveData: MutableLiveData<PagedDataSource>? = null
     private var executor: Executor? = null
     private var pagedListLiveData: LiveData<PagedList<IssueItem>>? = null
+
 
     init {
         photoDataSourceFactory = DataSourceFactory(issueService)
@@ -40,6 +41,9 @@ class IssuesViewModel @ViewModelInject constructor(private val issueService: Iss
         pagedListLiveData = LivePagedListBuilder(photoDataSourceFactory!!, config)
             .setFetchExecutor(executor!!)
             .build()
+
+
+
     }
 
     fun getPagedData(): LiveData<PagedList<IssueItem>>? {

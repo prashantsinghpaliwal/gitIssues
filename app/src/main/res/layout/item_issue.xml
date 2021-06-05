@@ -10,7 +10,7 @@
 
         <variable
             name="itemClick"
-            type="com.prashant.nogitissues.ui.main.PagedIssueAdapter.ItemClickListener" />
+            type="com.prashant.nogitissues.ui.issuelist.PagedIssueAdapter.ItemClickListener" />
 
     </data>
 

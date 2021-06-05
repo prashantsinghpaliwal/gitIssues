@@ -1,11 +1,12 @@
 package com.prashant.nogitissues.data
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.prashant.nogitissues.network.IssueService
 
 
-class DataSourceFactory (private val issueService: IssueService) :
+class DataSourceFactory(private val issueService: IssueService) :
     DataSource.Factory<Long, IssueItem>() {
 
     private var pagedDataSource: PagedDataSource? = null
@@ -15,7 +16,7 @@ class DataSourceFactory (private val issueService: IssueService) :
         mutableLiveData = MutableLiveData<PagedDataSource>()
     }
 
-   override fun create(): DataSource<Long, IssueItem>? {
+    override fun create(): DataSource<Long, IssueItem>? {
         pagedDataSource = PagedDataSource(issueService)
         mutableLiveData.postValue(pagedDataSource)
         return pagedDataSource

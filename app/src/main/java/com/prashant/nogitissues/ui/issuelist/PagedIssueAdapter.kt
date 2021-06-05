@@ -1,4 +1,4 @@
-package com.prashant.nogitissues.ui.main
+package com.prashant.nogitissues.ui.issuelist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

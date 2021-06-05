@@ -1,12 +1,15 @@
 package com.prashant.nogitissues.data
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.prashant.nogitissues.network.IssueService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 class PagedDataSource (private val issueService: IssueService) :
     PageKeyedDataSource<Long, IssueItem>() {
+
     override fun loadInitial(
         params: LoadInitialParams<Long>,
         callback: LoadInitialCallback<Long, IssueItem>
@@ -20,7 +23,6 @@ class PagedDataSource (private val issueService: IssueService) :
                     callback.onResult(it, null, 2)
                 }
             }, {
-
                 Log.v("PagingLogs", "message ${it.localizedMessage}")
             })
     }

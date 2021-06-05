@@ -3,4 +3,6 @@
     <string name="title_holder">Mars mission from united Arab Emirates</string>
     <string name="desc_holder">Lifting off tanghesima space center in Japan, it is the first</string>
     <string name="author">New York Times</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

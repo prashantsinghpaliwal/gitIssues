@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/issueListFragment">
+
+    <fragment
+        android:id="@+id/issueListFragment"
+        android:name="com.prashant.nogitissues.ui.issuelist.IssueListFragment"
+        android:label="Issue List"
+        tools:layout="@layout/fragment_issue_list">
+        <action
+            android:id="@+id/action_issueListFragment_to_issueDetailsFragment"
+            app:destination="@id/issueDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/issueDetailsFragment"
+        android:name="com.prashant.nogitissues.ui.detail.DetailsFragment"
+        android:label="Issue Details"
+        tools:layout="@layout/fragment_details">
+
+        <argument
+            android:name="issue_id"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
+
+</navigation>
